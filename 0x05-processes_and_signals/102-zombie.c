@@ -1,11 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
- * infinite_while - Run an infinite while loop.
+ * infinite_while - Runs an infinite while loop.
  *
  * Return: Always 0.
  */
