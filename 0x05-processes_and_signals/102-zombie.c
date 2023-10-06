@@ -1,8 +1,7 @@
-#include <sys/types.h>
-#include <sys/wait.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 /**
  * infinite_while - Runs an infinite while loop.
@@ -27,23 +26,16 @@ int infinite_while(void)
 
 int main(void)
 {
-	pid_t pid;
-	char count = 0;
+	int i;
 
-	while (count < 5)
+	for (i = 0; i < 5; i++)
 	{
-		pid = fork();
-		
-		if (pid > 0)
+		if (fork() == 0)
 		{
-			printf("Zombie process created, PID: %d\n", pid);
-			sleep(1);
-			count++;
+			dprintf(1, "Zombie process created, PID: %d\n", getpid());
+			return (0);
 		}
-		else
-			exit(0);
 	}
-
 	infinite_while();
-
-	return (EXIT_SUCCESS);
+	return (0);
+}
